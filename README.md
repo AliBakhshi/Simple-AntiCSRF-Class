@@ -1,5 +1,6 @@
 # Simple-AntiCSRF-Class
-Simple PHP Anti CSRF Class
+
+Simple PHP Anti CSRF Class Based On Session
 
 # How To Use 
 
