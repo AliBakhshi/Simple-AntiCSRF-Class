@@ -1,21 +1,25 @@
 <?php
 
 class Token {
+    
     public static $alert_status = false;
     public static $email = '';
+    
     // Create Custom Key
     public static function token_creator()
     {
         $string = 'QWERTYUIOP[]ASDFGHJKLZXCVBNMqwertyujpasdfghjklzxcvbnm1234567890/*-+@!#$%^&*()';
         $max = strlen($string) - 1;
         $string = str_split($string);
-        $random = '';
+        $random = microtime();
         for($i=0;$i<$max;$i++){
             $min = rand(0,$max);
             $random .= $string[rand($min,rand($min,$max))];
         }
+        $random .= microtime();
         return $random;
     }
+    
     // Add Token  Session
     public static function token_add($key)
     {
@@ -26,6 +30,7 @@ class Token {
             return false;
         endif;
     }
+    
     // Alert Hack Ip and Date To Admin
     public static function token_alert()
     {
@@ -41,6 +46,7 @@ class Token {
             mail($to, $subject, $message, $headers);
         }
     }
+    
     // View Token Input
     public static function token_view($key)
     {
@@ -61,6 +67,7 @@ class Token {
             return false;
         endif;
     }
+    
     // Validation Token
     public static function token_validation($key)
     {
